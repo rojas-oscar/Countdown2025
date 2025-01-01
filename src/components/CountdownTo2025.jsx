@@ -73,7 +73,7 @@ const CountdownTo2025 = () => {
         </div>
       ) : (
         <div className="countdown">
-          <h1 className='message'>Countdown to the damned 2025</h1>
+          <h1 className='message'>Countdown to the focking 2025</h1>
           <p className="message">"The clock is ticking. Stay hard!"</p>
           <p className="note message">The grind is real. The pain is inevitable. The victory is earned.</p>
           <div className="time">
