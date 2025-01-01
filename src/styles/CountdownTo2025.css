@@ -1,0 +1,172 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(to right, #000428, #004e92);
+  color: #fff;
+  overflow: hidden;
+}
+
+.countdown-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  text-align: center;
+  padding: 0 20px;
+}
+
+.countdown h1 {
+  font-size: 3rem;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  animation: pulse 2s infinite;
+}
+
+.message {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  font-style: italic;
+  color: #ddd;
+}
+
+.time {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.unit {
+  background: rgba(0, 0, 0, 0.7);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  font-size: 1.5rem;
+  animation: bounce 1.5s infinite;
+  margin: 10px;
+  flex: 1;
+  min-width: 100px;
+}
+
+.unit span {
+  display: block;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #00d4ff;
+}
+
+.unit label {
+  text-transform: uppercase;
+  font-size: 1rem;
+  color: #aaa;
+}
+
+.new-year {
+  text-align: center;
+  animation: fadeIn 2s;
+}
+
+.new-year h1 {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.end-of-year {
+  text-align: center;
+  animation: fadeIn 2s;
+}
+
+.end-of-year h1 {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Media Queries for responsiveness */
+@media (max-width: 768px) {
+  .countdown h1 {
+    font-size: 2rem;
+  }
+
+  .message {
+    font-size: 1rem;
+  }
+
+  .unit {
+    font-size: 1.2rem;
+    min-width: 80px;
+    padding: 15px;
+  }
+
+  .unit span {
+    font-size: 2rem;
+  }
+
+  .unit label {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .countdown h1 {
+    font-size: 1.5rem;
+  }
+
+  .message {
+    font-size: 0.9rem;
+  }
+
+  .unit {
+    font-size: 1rem;
+    min-width: 60px;
+    padding: 12px;
+  }
+
+  .unit span {
+    font-size: 1.8rem;
+  }
+
+  .unit label {
+    font-size: 0.8rem;
+  }
+
+  .new-year h1 {
+    font-size: 2.5rem;
+  }
+
+  .end-of-year h1 {
+    font-size: 2.5rem;
+  }
+}
