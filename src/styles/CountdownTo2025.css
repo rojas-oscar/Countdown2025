@@ -4,7 +4,9 @@ body {
   font-family: 'Arial', sans-serif;
   background: linear-gradient(to right, #000428, #004e92);
   color: #fff;
-  overflow: hidden;
+  overflow-y: scroll; /* Habilita el scroll vertical */
+  scrollbar-width: thin; /* Estilo para navegadores compatibles */
+  scrollbar-color: #00d4ff #000428; /* Colores para el scroll */
 }
 
 .countdown-container {
@@ -122,4 +124,19 @@ body {
   .unit label {
     font-size: 0.8rem;
   }
+}
+
+/* Personalización de la barra de desplazamiento para navegadores Webkit */
+body::-webkit-scrollbar {
+  width: 8px; /* Ancho de la barra */
+}
+
+body::-webkit-scrollbar-track {
+  background: #000428; /* Fondo de la pista */
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #00d4ff; /* Color del control */
+  border-radius: 10px; /* Bordes redondeados */
+  border: 2px solid #000428; /* Borde alrededor del control */
 }
