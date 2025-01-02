@@ -1,103 +1,69 @@
-import React, { useEffect, useState } from 'react';
-import './../styles/CountdownTo2025.css';
+import React, { useEffect, useState } from "react";
+import "./../styles/CountdownTo2025.css";
 
-const CountdownTo2025 = () => {
-  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
-  const [isNewYear, setIsNewYear] = useState(false);
-  const [isEndOfYear, setIsEndOfYear] = useState(false);
+const Countdown = () => {
+  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft(new Date().getFullYear()));
+  const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
 
-  function calculateTimeLeft() {
+  function calculateTimeLeft(year) {
     const now = new Date();
-    const targetDate = new Date('2025-01-01T00:00:00');
-    const difference = targetDate - now;
-
-    if (difference <= 0) return null;
+    const startOfNextYear = new Date(year + 1, 0, 1); // January 1st of next year
+    const startOfCurrentYear = new Date(year, 0, 1);
+    const difference = startOfNextYear - now;
 
     return {
       days: Math.floor(difference / (1000 * 60 * 60 * 24)),
       hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
       minutes: Math.floor((difference / (1000 * 60)) % 60),
       seconds: Math.floor((difference / 1000) % 60),
+      elapsedDays: Math.floor((now - startOfCurrentYear) / (1000 * 60 * 60 * 24)), // Days since Jan 1st
     };
   }
 
   useEffect(() => {
-    if (!timeLeft) {
-      if (!isNewYear) {
-        setIsNewYear(true);
-      } else if (!isEndOfYear) {
-        setIsEndOfYear(true);
-      }
-      return;
-    }
-
     const timer = setInterval(() => {
-      setTimeLeft(calculateTimeLeft());
+      const newTimeLeft = calculateTimeLeft(currentYear);
+      setTimeLeft(newTimeLeft);
+
+      if (
+        newTimeLeft.days <= 0 &&
+        newTimeLeft.hours <= 0 &&
+        newTimeLeft.minutes <= 0 &&
+        newTimeLeft.seconds <= 0
+      ) {
+        setCurrentYear((prevYear) => prevYear + 1);
+      }
     }, 1000);
 
     return () => clearInterval(timer);
-  }, [timeLeft, isNewYear, isEndOfYear]);
+  }, [currentYear]);
 
   return (
     <div className="countdown-container">
-      {isEndOfYear ? (
-        <div className="end-of-year">
-          <h1>The countdown to 2025 has begun</h1>
-          <p>"STAY HARD! The grind doesn't stop. Keep pushing."</p>
-          <p className="note">No excuses. The clock is ticking. This is the beginning of something bigger.</p>
-          <div className="time">
-            <div className="unit">
-              <span>{timeLeft.days}</span>
-              <label>Days</label>
-            </div>
-            <div className="unit">
-              <span>{timeLeft.hours}</span>
-              <label>Hours</label>
-            </div>
-            <div className="unit">
-              <span>{timeLeft.minutes}</span>
-              <label>Minutes</label>
-            </div>
-            <div className="unit">
-              <span>{timeLeft.seconds}</span>
-              <label>Seconds</label>
-            </div>
-          </div>
+      <h1>Countdown to {currentYear + 1}</h1>
+      <div className="time">
+        <div className="unit">
+          <span>{timeLeft.days}</span>
+          <label>Days</label>
         </div>
-      ) : isNewYear ? (
-        <div className="new-year">
-          <h1>Welcome to 2025!</h1>
-          <p>"The grind doesn’t stop. Stay hard. No excuses!"</p>
-          <p className="note">The battle starts NOW. Every second counts. There is no time to waste.</p>
-          <div className="confetti"></div>
+        <div className="unit">
+          <span>{timeLeft.hours}</span>
+          <label>Hours</label>
         </div>
-      ) : (
-        <div className="countdown">
-          <h1 className='message'>Countdown to the fucking 2025</h1>
-          <p className="message">"The clock is ticking. Stay hard!"</p>
-          <p className="note message">The grind is real. The pain is inevitable. The victory is earned.</p>
-          <div className="time">
-            <div className="unit">
-              <span>{timeLeft.days}</span>
-              <label>Days</label>
-            </div>
-            <div className="unit">
-              <span>{timeLeft.hours}</span>
-              <label>Hours</label>
-            </div>
-            <div className="unit">
-              <span>{timeLeft.minutes}</span>
-              <label>Minutes</label>
-            </div>
-            <div className="unit">
-              <span>{timeLeft.seconds}</span>
-              <label>Seconds</label>
-            </div>
-          </div>
+        <div className="unit">
+          <span>{timeLeft.minutes}</span>
+          <label>Minutes</label>
         </div>
-      )}
+        <div className="unit">
+          <span>{timeLeft.seconds}</span>
+          <label>Seconds</label>
+        </div>
+      </div>
+      <div className="elapsed-time">
+        <span>{timeLeft.elapsedDays} Days, {timeLeft.hours} Hours, {timeLeft.minutes} Minutes, and {timeLeft.seconds} Seconds have elapsed since the beginning of {currentYear}.</span>
+      </div>
     </div>
   );
 };
 
-export default CountdownTo2025;
+export default Countdown;

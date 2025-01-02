@@ -17,18 +17,11 @@ body {
   padding: 0 20px;
 }
 
-.countdown h1 {
+.countdown-container h1 {
   font-size: 3rem;
   text-transform: uppercase;
   margin-bottom: 1rem;
   animation: pulse 2s infinite;
-}
-
-.message {
-  font-size: 1.2rem;
-  margin-bottom: 2rem;
-  font-style: italic;
-  color: #ddd;
 }
 
 .time {
@@ -65,24 +58,10 @@ body {
   color: #aaa;
 }
 
-.new-year {
-  text-align: center;
-  animation: fadeIn 2s;
-}
-
-.new-year h1 {
-  font-size: 4rem;
-  margin-bottom: 1rem;
-}
-
-.end-of-year {
-  text-align: center;
-  animation: fadeIn 2s;
-}
-
-.end-of-year h1 {
-  font-size: 3.5rem;
-  margin-bottom: 1rem;
+.elapsed-time {
+  font-size: 1.2rem;
+  color: #ddd;
+  margin-top: 1rem;
 }
 
 @keyframes pulse {
@@ -105,23 +84,9 @@ body {
   }
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-/* Media Queries for responsiveness */
 @media (max-width: 768px) {
-  .countdown h1 {
+  .countdown-container h1 {
     font-size: 2rem;
-  }
-
-  .message {
-    font-size: 1rem;
   }
 
   .unit {
@@ -140,12 +105,8 @@ body {
 }
 
 @media (max-width: 480px) {
-  .countdown h1 {
+  .countdown-container h1 {
     font-size: 1.5rem;
-  }
-
-  .message {
-    font-size: 0.9rem;
   }
 
   .unit {
@@ -160,13 +121,5 @@ body {
 
   .unit label {
     font-size: 0.8rem;
-  }
-
-  .new-year h1 {
-    font-size: 2.5rem;
-  }
-
-  .end-of-year h1 {
-    font-size: 2.5rem;
   }
 }
