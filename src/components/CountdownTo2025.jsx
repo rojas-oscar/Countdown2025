@@ -60,7 +60,10 @@ const Countdown = () => {
         </div>
       </div>
       <div className="elapsed-time">
-        <span>{timeLeft.elapsedDays} Days, {timeLeft.hours} Hours, {timeLeft.minutes} Minutes, and {timeLeft.seconds} Seconds have elapsed since the beginning of {currentYear}.</span>
+        <span>
+          <span className="new-year">{timeLeft.elapsedDays}</span> Days,
+          <span className="new-year">{timeLeft.hours}</span> Hours, <span className="new-year">{timeLeft.minutes}</span> Minutes, and <span className="new-year">{timeLeft.seconds}</span> Seconds have elapsed since the beginning of <span className="new-year">{currentYear}</span>.
+        </span>
       </div>
     </div>
   );

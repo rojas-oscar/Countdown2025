@@ -140,3 +140,8 @@ body::-webkit-scrollbar-thumb {
   border-radius: 10px; /* Bordes redondeados */
   border: 2px solid #000428; /* Borde alrededor del control */
 }
+
+.new-year {
+  color: #00d4ff;
+  font-size: 30px;
+}
